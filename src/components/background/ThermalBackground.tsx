@@ -4,7 +4,7 @@ export default function ThermalBackground() {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 pointer-events-none -z-10 overflow-hidden select-none"
+      className="fixed inset-0 pointer-events-none -z-10 overflow-hidden select-none w-full max-w-[100vw]"
     >
       {/* 1. Base Warm Porcelain Canvas */}
       <div className="absolute inset-0 bg-[#FFF5F0]" />

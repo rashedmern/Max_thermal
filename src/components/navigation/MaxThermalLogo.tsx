@@ -3,9 +3,13 @@ import Link from "next/link";
 
 interface MaxThermalLogoProps {
   className?: string;
+  inverted?: boolean;
 }
 
-export default function MaxThermalLogo({ className = "" }: MaxThermalLogoProps) {
+export default function MaxThermalLogo({
+  className = "",
+  inverted = false,
+}: MaxThermalLogoProps) {
   return (
     <Link
       href="/"
@@ -95,10 +99,18 @@ export default function MaxThermalLogo({ className = "" }: MaxThermalLogoProps) 
 
       {/* Typography matching reference */}
       <div className="flex flex-col justify-center">
-        <span className="font-extrabold tracking-tight text-[#182337] text-[15px] sm:text-[16px] leading-[1.15] font-sans">
+        <span
+          className={`font-extrabold tracking-tight text-[15px] sm:text-[16px] leading-[1.15] font-sans ${
+            inverted ? "text-white" : "text-[#182337]"
+          }`}
+        >
           MAX THERMAL
         </span>
-        <span className="text-[8px] sm:text-[8.5px] uppercase tracking-[0.16em] text-slate-500 font-semibold leading-tight mt-0.5">
+        <span
+          className={`text-[8px] sm:text-[8.5px] uppercase tracking-[0.16em] font-semibold leading-tight mt-0.5 ${
+            inverted ? "text-slate-400" : "text-slate-500"
+          }`}
+        >
           EPS & CORK SHEET SOLUTIONS
         </span>
       </div>

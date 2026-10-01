@@ -10,19 +10,74 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-bengali: var(--font-bengali);
 }
 
 html {
   scroll-behavior: smooth;
   background-color: #FFF5F0;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-geist-sans), var(--font-bengali), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
   min-height: 100vh;
+}
+
+/* Explicit Bengali Typography Support */
+html[lang="bn"],
+html.lang-bn,
+.font-bengali {
+  font-family: var(--font-bengali), system-ui, -apple-system, sans-serif;
+}
+
+/* 
+ * CRITICAL FIX: In Bengali script, negative letter-spacing (tracking-tight/tracking-tighter)
+ * breaks conjuncts/ligatures (যুক্তবর্ণ) and dislocates diacritics (কার-চিহ্ন).
+ * We enforce normal letter-spacing for all Bengali text and ensure adequate line height.
+ */
+html[lang="bn"] h1,
+html[lang="bn"] h2,
+html[lang="bn"] h3,
+html[lang="bn"] h4,
+html[lang="bn"] h5,
+html[lang="bn"] h6,
+html.lang-bn h1,
+html.lang-bn h2,
+html.lang-bn h3,
+html.lang-bn h4,
+html.lang-bn h5,
+html.lang-bn h6,
+.font-bengali {
+  letter-spacing: 0em !important;
+  word-spacing: 0.05em;
+}
+
+html[lang="bn"] h1,
+html.lang-bn h1 {
+  line-height: 1.25 !important;
+}
+
+html[lang="bn"] h2,
+html[lang="bn"] h3,
+html.lang-bn h2,
+html.lang-bn h3 {
+  line-height: 1.3 !important;
+}
+
+/* Hide scrollbar utility for clean mobile horizontal carousels/tabs */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Smooth selection styling */
@@ -47,4 +102,25 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #FFB39A;
+}
+
+/* Infinite Butter-Smooth Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
