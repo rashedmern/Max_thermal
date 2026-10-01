@@ -14,6 +14,15 @@ interface NavItem {
   id: string;
 }
 
+const NAV_SECTION_IDS = [
+  "home",
+  "our-journey",
+  "products",
+  "projects",
+  "industry",
+  "team",
+];
+
 export default function Navbar() {
   const { getLenis } = useSmoothScroll();
   const { language, setLanguage, t } = useLanguage();
@@ -128,11 +137,8 @@ export default function Navbar() {
             window.scrollTo({ top, behavior: "smooth" });
           }
         }
-      } else if (initialHash === "home") {
-        setActiveSection("home");
-      } else {
-        const match = navItems.find((n) => n.id === initialHash);
-        if (match) setActiveSection(match.id);
+      } else if (NAV_SECTION_IDS.includes(initialHash)) {
+        setActiveSection(initialHash);
       }
     }, 200);
 
@@ -403,7 +409,11 @@ export default function Navbar() {
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
             className="lg:hidden px-4 pt-3 pb-6 max-w-lg mx-auto"
           >
-            <div className="rounded-3xl bg-white/95 backdrop-blur-xl border border-black/[0.08] shadow-[0_12px_36px_rgba(0,0,0,0.08)] p-5 space-y-4">
+            <div
+              data-lenis-prevent
+              className="rounded-3xl bg-white/95 backdrop-blur-xl border border-black/[0.08] shadow-[0_12px_36px_rgba(0,0,0,0.08)] p-5 space-y-4 max-h-[calc(100dvh-5.5rem)] overflow-y-auto overscroll-contain"
+              style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}
+            >
               {/* Navigation Links */}
               <div className="flex flex-col space-y-1">
                 {navItems.map((item) => {
@@ -436,14 +446,16 @@ export default function Navbar() {
                 <span className="text-xs text-slate-500 font-medium">
                   {t.nav.languageLabel}
                 </span>
-                <div className="flex items-center bg-slate-100 p-0.5 rounded-full text-xs">
+                <div className="flex items-center bg-slate-100 p-0.5 rounded-full text-xs" role="group" aria-label="Mobile Language Selector">
                   <button
                     type="button"
                     onClick={() => setLanguage("en")}
-                    className={`px-3 py-1 rounded-full font-medium transition-colors ${
+                    aria-label="Switch language to English"
+                    aria-pressed={language === "en"}
+                    className={`px-3 py-1 rounded-full font-medium transition-colors cursor-pointer ${
                       language === "en"
                         ? "bg-[#FFEADB] text-slate-900 shadow-xs font-bold"
-                        : "text-slate-500"
+                        : "text-slate-500 hover:text-slate-900"
                     }`}
                   >
                     English
@@ -451,10 +463,12 @@ export default function Navbar() {
                   <button
                     type="button"
                     onClick={() => setLanguage("bn")}
-                    className={`px-3 py-1 rounded-full font-medium transition-colors ${
+                    aria-label="Switch language to Bengali"
+                    aria-pressed={language === "bn"}
+                    className={`px-3 py-1 rounded-full font-medium transition-colors cursor-pointer ${
                       language === "bn"
                         ? "bg-[#FFEADB] text-slate-900 shadow-xs font-bold"
-                        : "text-slate-500"
+                        : "text-slate-500 hover:text-slate-900"
                     }`}
                   >
                     বাংলা

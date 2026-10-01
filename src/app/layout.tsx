@@ -4,6 +4,7 @@ import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import ThermalBackground from "@/components/background/ThermalBackground";
 import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/navigation/Footer";
+import MaxBot from "@/components/chat/MaxBot";
 import { LanguageProvider } from "@/context/LanguageContext";
 import "./globals.css";
 
@@ -68,6 +69,9 @@ export default function RootLayout({
 
             {/* Site Footer */}
             <Footer />
+
+            {/* Global Floating Action Buttons & Interactive MAX Bot AI */}
+            <MaxBot />
           </SmoothScrollProvider>
         </LanguageProvider>
       </body>

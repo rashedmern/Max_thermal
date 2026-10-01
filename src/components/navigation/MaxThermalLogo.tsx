@@ -20,6 +20,8 @@ export default function MaxThermalLogo({
       <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex-shrink-0 flex items-center justify-center">
         <svg
           viewBox="0 0 40 40"
+          width="40"
+          height="40"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.06)]"

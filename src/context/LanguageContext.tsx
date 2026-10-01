@@ -3,8 +3,9 @@
 import React, {
   createContext,
   useContext,
-  useState,
+  useCallback,
   useEffect,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 import {
@@ -25,22 +26,38 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 );
 
 const STORAGE_KEY = "max_thermal_preferred_lang";
+let memoryLang: Language = "en";
+
+function subscribe(callback: () => void) {
+  window.addEventListener("storage", callback);
+  window.addEventListener("local-storage-lang", callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener("local-storage-lang", callback);
+  };
+}
+
+function getSnapshot(): Language {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === "en" || saved === "bn") {
+      memoryLang = saved;
+      return saved;
+    }
+  } catch {}
+  return memoryLang;
+}
+
+function getServerSnapshot(): Language {
+  return "en";
+}
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("en");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    try {
-      const savedLang = localStorage.getItem(STORAGE_KEY) as Language | null;
-      if (savedLang === "en" || savedLang === "bn") {
-        setLanguageState(savedLang);
-      }
-    } catch {
-      // LocalStorage access may fail in private browsing mode
-    }
-  }, []);
+  const language = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot
+  );
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -53,18 +70,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, [language]);
 
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
+  const setLanguage = useCallback((lang: Language) => {
+    memoryLang = lang;
     try {
       localStorage.setItem(STORAGE_KEY, lang);
+      window.dispatchEvent(new Event("local-storage-lang"));
     } catch {
       // Fail silently if localStorage is restricted
     }
-  };
+  }, []);
 
-  const toggleLanguage = () => {
+  const toggleLanguage = useCallback(() => {
     setLanguage(language === "en" ? "bn" : "en");
-  };
+  }, [language, setLanguage]);
 
   const t = TRANSLATIONS[language];
 

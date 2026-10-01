@@ -10,7 +10,6 @@ import {
   MessageSquareQuote,
   Sparkles,
   Clock,
-  Layers,
 } from "lucide-react";
 import { BLOG_STORIES, BlogStory } from "@/data/blogData";
 import { useLanguage } from "@/context/LanguageContext";
@@ -50,9 +49,6 @@ export default function BlogSection() {
       className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 select-none overflow-hidden"
       aria-label="Learn About Insulation"
     >
-      {/* Background Decorative Warm Ambient Glow */}
-      <div className="absolute top-1/4 -right-32 w-80 h-80 rounded-full bg-[#FFEADB]/40 blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-1/4 -left-32 w-80 h-80 rounded-full bg-[#FF5A00]/10 blur-3xl pointer-events-none -z-10" />
 
       {/* 1. Centered Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -140,7 +136,7 @@ export default function BlogSection() {
       {/* 3. Interactive Comic-Style Story Reader Dialog */}
       <AnimatePresence>
         {selectedStory && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8">
+          <div data-lenis-prevent className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 overscroll-contain" style={{ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}>
             {/* Modal Backdrop (Soft dark frosted glass) */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -152,11 +148,13 @@ export default function BlogSection() {
 
             {/* Modal Container: Large & Generous Width (max-w-4xl lg:max-w-5xl) */}
             <motion.div
+              data-lenis-prevent
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-w-4xl lg:max-w-5xl w-full bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-white/80 shadow-2xl overflow-hidden z-10 max-h-[92vh] flex flex-col"
+              className="relative max-w-4xl lg:max-w-5xl w-full bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-white/80 shadow-2xl overflow-hidden z-10 max-h-[calc(100dvh-2rem)] flex flex-col overscroll-contain"
+              style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}
             >
               {/* Modal Header */}
               <div className="flex items-start justify-between gap-4 pb-5 border-b border-slate-100 shrink-0">
@@ -183,7 +181,11 @@ export default function BlogSection() {
               </div>
 
               {/* Modal Body: Scrollable Comic Story Panels */}
-              <div className="overflow-y-auto mt-6 pr-1 space-y-6 sm:space-y-8">
+              <div
+                data-lenis-prevent
+                className="overflow-y-auto overscroll-contain mt-6 pr-1 space-y-6 sm:space-y-8"
+                style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}
+              >
                 {/* Intro Excerpt Box */}
                 <div className="p-4 sm:p-5 rounded-2xl bg-[#FFF9F5] border border-[#FFEADB] text-slate-700 text-sm sm:text-base leading-relaxed">
                   <span className="font-bold text-[#182337]">Story Premise: </span>

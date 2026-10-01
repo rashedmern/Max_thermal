@@ -263,19 +263,23 @@ export default function ProjectsSection() {
       <AnimatePresence>
         {selectedProject && (
           <motion.div
+            data-lenis-prevent
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8"
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 overscroll-contain"
+            style={{ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
+              data-lenis-prevent
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative max-w-5xl w-full max-h-[92vh] flex flex-col rounded-3xl overflow-hidden bg-slate-950 border border-white/15 shadow-2xl"
+              className="relative max-w-5xl w-full max-h-[92dvh] max-h-[calc(100dvh-2rem)] flex flex-col rounded-3xl overflow-hidden bg-slate-950 border border-white/15 shadow-2xl overscroll-contain"
+              style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -289,7 +293,7 @@ export default function ProjectsSection() {
               </button>
 
               {/* Fullscreen Photo Frame */}
-              <div className="relative w-full h-[50vh] sm:h-[65vh] max-h-[620px] bg-black">
+              <div className="relative w-full h-[50dvh] sm:h-[65dvh] max-h-[620px] bg-black">
                 <Image
                   src={selectedProject.image}
                   alt={selectedProject.title}

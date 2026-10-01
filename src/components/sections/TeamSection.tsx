@@ -44,9 +44,6 @@ export default function TeamSection() {
       className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 select-none scroll-mt-24 overflow-hidden"
       aria-label="Leadership and Executive Team"
     >
-      {/* Background Decorative Warm Ambient Glow */}
-      <div className="absolute top-1/3 -left-32 w-80 h-80 rounded-full bg-[#FFEADB]/40 blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-1/3 -right-32 w-80 h-80 rounded-full bg-[#FF5A00]/10 blur-3xl pointer-events-none -z-10" />
 
       {/* 1. Centered Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -129,7 +126,7 @@ export default function TeamSection() {
       {/* 3. Spacious Large-Width Bio Modal Dialog */}
       <AnimatePresence>
         {selectedMember && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8">
+          <div data-lenis-prevent className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 overscroll-contain" style={{ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}>
             {/* Modal Backdrop (Soft dark frosted glass) */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -141,18 +138,20 @@ export default function TeamSection() {
 
             {/* Modal Card Container: Large & Generous Width (max-w-4xl lg:max-w-5xl) */}
             <motion.div
+              data-lenis-prevent
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-w-4xl lg:max-w-5xl w-full bg-white rounded-3xl p-6 sm:p-10 md:p-12 border border-white/80 shadow-2xl overflow-hidden z-10 max-h-[92vh] overflow-y-auto"
+              className="relative max-w-4xl lg:max-w-5xl w-full bg-white rounded-3xl p-6 sm:p-10 md:p-12 border border-white/80 shadow-2xl overflow-hidden z-10 max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain"
+              style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}
             >
               {/* Close Button */}
               <button
                 type="button"
                 onClick={() => setSelectedMember(null)}
                 className="absolute top-5 right-5 sm:top-6 sm:right-6 z-20 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 flex items-center justify-center transition-colors cursor-pointer shadow-xs"
-                aria-label="Close dialog"
+                aria-label={language === "bn" ? "সদস্য বিবরণ বন্ধ করুন" : "Close team member details"}
               >
                 <X className="w-5 h-5" />
               </button>

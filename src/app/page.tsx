@@ -49,8 +49,6 @@ export default function Home() {
       >
         <span id="contact" className="sr-only" aria-hidden="true" />
         <div className="relative rounded-3xl overflow-hidden bg-white/95 backdrop-blur-xl border border-white/90 text-[#0F172A] p-8 sm:p-14 shadow-[0_12px_40px_rgba(0,0,0,0.06)]">
-          <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#FFEADB]/60 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[#FF5A00]/10 blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-2xl">
             <span className="text-xs uppercase tracking-widest font-bold text-[#FF5A00]">
               {t.quote.badge}

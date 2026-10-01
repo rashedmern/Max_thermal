@@ -112,10 +112,11 @@ export default function HeroVideoSection() {
           <video
             ref={ambientVideoRef}
             src={HERO_VIDEO_CONFIG.sources[0]?.src}
-            muted
             autoPlay={HERO_VIDEO_CONFIG.autoplay}
+            muted
             loop={HERO_VIDEO_CONFIG.loop}
             playsInline
+            preload="auto"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover scale-125 filter blur-3xl opacity-40 pointer-events-none"
           />
@@ -126,10 +127,11 @@ export default function HeroVideoSection() {
           {/* Primary Video Player */}
           <video
             ref={videoRef}
-            playsInline
             autoPlay={HERO_VIDEO_CONFIG.autoplay}
-            loop={HERO_VIDEO_CONFIG.loop}
             muted={isMuted}
+            loop={HERO_VIDEO_CONFIG.loop}
+            playsInline
+            preload="auto"
             className="relative z-10 w-full h-full object-cover shadow-2xl rounded-2xl"
           >
             {HERO_VIDEO_CONFIG.sources.map((src, index) => (

@@ -71,51 +71,54 @@ export default function ProductsSection() {
         </p>
       </div>
 
-      {/* 2. Floating Product Tab Selector (Horizontally scrollable on mobile) */}
-      <div className="w-full flex justify-start sm:justify-center mb-8 sm:mb-10 overflow-x-auto no-scrollbar py-1">
-        <div
-          className="inline-flex items-center p-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.04)] mx-auto shrink-0"
-          role="tablist"
-          aria-label="Product Showcase Tabs"
-        >
-          {products.map((product) => {
-            const isSelected = product.id === activeId;
-            return (
-              <button
-                key={product.id}
-                type="button"
-                role="tab"
-                aria-selected={isSelected}
-                onClick={() => setActiveId(product.id)}
-                className={`relative px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-200 select-none whitespace-nowrap cursor-pointer ${
-                  isSelected
-                    ? "text-[#182337] font-bold"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                {isSelected && (
-                  <motion.span
-                    layoutId="product-tab"
-                    className="absolute inset-0 bg-[#FFEADB] rounded-full shadow-[0_2px_8px_rgba(255,90,0,0.12)] border border-[#FFD0B0]/60 -z-10"
-                    transition={{
-                      type: "spring",
-                      stiffness: 420,
-                      damping: 32,
-                    }}
-                  />
-                )}
-                <span className="relative z-10">{getTabLabel(product.id)}</span>
-              </button>
-            );
-          })}
+      {/* 2. Floating Product Tab Selector (Smooth Horizontally Scrollable on Mobile) */}
+      <div
+        data-lenis-prevent
+        className="w-full max-w-full overflow-x-auto overscroll-contain no-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] py-2 mb-8 sm:mb-10 px-4 sm:px-0"
+        style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}
+      >
+        <div className="flex sm:justify-center w-max min-w-full sm:min-w-0 mx-auto">
+          <div
+            className="inline-flex items-center p-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex-nowrap shrink-0"
+            role="tablist"
+            aria-label="Product Showcase Tabs"
+          >
+            {products.map((product) => {
+              const isSelected = product.id === activeId;
+              return (
+                <button
+                  key={product.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  onClick={() => setActiveId(product.id)}
+                  className={`relative px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-200 select-none whitespace-nowrap shrink-0 cursor-pointer ${
+                    isSelected
+                      ? "text-[#182337] font-bold"
+                      : "text-slate-600 hover:text-slate-900"
+                  }`}
+                >
+                  {isSelected && (
+                    <motion.span
+                      layoutId="product-tab"
+                      className="absolute inset-0 bg-[#FFEADB] rounded-full shadow-[0_2px_8px_rgba(255,90,0,0.12)] border border-[#FFD0B0]/60 -z-10"
+                      transition={{
+                        type: "spring",
+                        stiffness: 420,
+                        damping: 32,
+                      }}
+                    />
+                  )}
+                  <span className="relative z-10">{getTabLabel(product.id)}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
       {/* 3. Clean, Compact Showcase Card */}
       <div className="bg-white/90 backdrop-blur-md rounded-3xl p-5 sm:p-6 border border-white/80 shadow-sm mb-10 sm:mb-12 relative overflow-hidden">
-        {/* Subtle Ambient Glow */}
-        <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-[#FFEADB]/40 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[#FF5A00]/5 blur-3xl pointer-events-none" />
 
         <AnimatePresence mode="wait">
           <motion.div
@@ -175,8 +178,6 @@ export default function ProductsSection() {
 
       {/* 4. Dynamic Technical Specification Showcase Hub */}
       <div className="rounded-3xl bg-white/85 backdrop-blur-xl border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.05)] p-6 sm:p-10 relative overflow-hidden">
-        {/* Ambient Top Glow */}
-        <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#FF5A00]/10 blur-3xl pointer-events-none" />
 
         {/* Specifications Header */}
         <div className="pb-6 border-b border-slate-200/80">

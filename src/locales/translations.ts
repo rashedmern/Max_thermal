@@ -550,13 +550,22 @@ export const TRANSLATIONS: Record<Language, Translations> = {
             "Ultra-lightweight density profile cutting domestic and air export freight overheads.",
           ],
         },
-        "creative-arts": {
-          tabLabel: "Event & Interior",
-          title: "Architectural Decor & Thematic Arts",
+        creative: {
+          tabLabel: "Creative & Events",
+          title: "Event Management, Props & Luxury Furniture",
           highlights: [
-            "Precision CNC-wire cutting for oversized trade show backdrops and 3D typography.",
-            "Smooth fine-pore surface compatible with latex paints, plaster coatings & acrylics.",
-            "Ultra-lightweight structural core enabling rapid, tool-free rigging and ceiling suspension.",
+            "High-density blocks tailored for 5-axis CNC hot-wire router carving.",
+            "Stage backdrops, 3D letters, sculptures & architectural decor.",
+            "Lightweight core cushioning for furniture & mattress manufacturing.",
+          ],
+        },
+        "creative-arts": {
+          tabLabel: "Creative & Events",
+          title: "Event Management, Props & Luxury Furniture",
+          highlights: [
+            "High-density blocks tailored for 5-axis CNC hot-wire router carving.",
+            "Stage backdrops, 3D letters, sculptures & architectural decor.",
+            "Lightweight core cushioning for furniture & mattress manufacturing.",
           ],
         },
       },
@@ -1084,13 +1093,22 @@ export const TRANSLATIONS: Record<Language, Translations> = {
             "অত্যন্ত হালকা ওজনের কারণে দেশীয় ও আন্তর্জাতিক আকাশপথে পরিবহন খরচ সাশ্রয়।",
           ],
         },
-        "creative-arts": {
-          tabLabel: "ইভেন্ট ও ইন্টেরিয়র",
-          title: "আর্কিটেকচারাল ডেকোর ও থিমেটিক আর্টস",
+        creative: {
+          tabLabel: "ক্রিয়েটিভ ও ইভেন্টস",
+          title: "ইভেন্ট ম্যানেজমেন্ট, প্রপস ও লাক্সারি ফার্নিচার",
           highlights: [
-            "বাণিজ্যমেলা, এক্সপো ও থ্রিডি অক্ষরের জন্য সিএনসি ওয়্যার নিখুঁত কার্ভিং।",
-            "মসৃণ সারফেস যাতে যেকোনো পেইন্ট, প্লাস্টার বা অ্যাক্রিলিক সহজে বসে যায়।",
-            "অতি-হালকা কাঠামো যার ফলে ড্রিলিং বা ভারী ফ্রেম ছাড়াই সহজে স্থাপন করা সম্ভব।",
+            "৫-অ্যাক্সিস সিএনসি হট-ওয়্যার রাউটার কার্ভিং ও খোদাইয়ের জন্য উপযোগী হাই-ডেনসিটি ব্লক।",
+            "স্টেজ ব্যাকড্রপ, এক্সপো ডিসপ্লে, থ্রিডি বর্ণমালা ও আর্কিটেকচারাল ডেকোর।",
+            "ফার্নিচার, ম্যাট্রেস ও লাক্সারি সিটিংয়ে অত্যন্ত হালকা ও টেকসই কোর কুশনিং।",
+          ],
+        },
+        "creative-arts": {
+          tabLabel: "ক্রিয়েটিভ ও ইভেন্টস",
+          title: "ইভেন্ট ম্যানেজমেন্ট, প্রপস ও লাক্সারি ফার্নিচার",
+          highlights: [
+            "৫-অ্যাক্সিস সিএনসি হট-ওয়্যার রাউটার কার্ভিং ও খোদাইয়ের জন্য উপযোগী হাই-ডেনসিটি ব্লক।",
+            "স্টেজ ব্যাকড্রপ, এক্সপো ডিসপ্লে, থ্রিডি বর্ণমালা ও আর্কিটেকচারাল ডেকোর।",
+            "ফার্নিচার, ম্যাট্রেস ও লাক্সারি সিটিংয়ে অত্যন্ত হালকা ও টেকসই কোর কুশনিং।",
           ],
         },
       },

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, HelpCircle } from "lucide-react";
+import { Plus } from "lucide-react";
 import { FAQ_ITEMS } from "@/data/faqData";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -20,9 +20,6 @@ export default function FAQSection() {
       className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 select-none overflow-hidden"
       aria-label="Frequently Asked Questions"
     >
-      {/* Background Decorative Warm Ambient Glow */}
-      <div className="absolute top-1/4 -left-32 w-80 h-80 rounded-full bg-[#FFEADB]/40 blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-[#FF5A00]/10 blur-3xl pointer-events-none -z-10" />
 
       {/* 1. Centered Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">

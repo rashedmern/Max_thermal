@@ -24,9 +24,6 @@ export default function IndustrySection() {
       className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 select-none scroll-mt-24 overflow-hidden"
       aria-label="Industries We Power"
     >
-      {/* Background Decorative Warm Ambient Glow */}
-      <div className="absolute top-1/4 -left-32 w-80 h-80 rounded-full bg-[#FFEADB]/40 blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-[#FF5A00]/10 blur-3xl pointer-events-none -z-10" />
 
       {/* 1. Centered Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
@@ -45,12 +42,12 @@ export default function IndustrySection() {
         </p>
       </div>
 
-      {/* 2. Sector Switcher Tabs (Horizontal Pills, Scrollable on Mobile) */}
-      <div className="w-full flex justify-start sm:justify-center mb-10 sm:mb-12 overflow-x-auto no-scrollbar py-1">
+      {/* 2. Spacious Card-Style Sector Switcher Hub */}
+      <div className="w-full max-w-4xl mx-auto mb-10 sm:mb-12 bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl border border-neutral-200/80 shadow-md p-3 sm:p-4 md:p-5">
         <div
-          className="inline-flex items-center p-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.04)] mx-auto shrink-0"
           role="tablist"
           aria-label="Industry Sector Switcher"
+          className="flex flex-wrap justify-center items-center gap-2 sm:gap-3"
         >
           {INDUSTRY_SECTORS.map((sector) => {
             const isSelected = activeId === sector.id;
@@ -64,24 +61,13 @@ export default function IndustrySection() {
                 role="tab"
                 aria-selected={isSelected}
                 onClick={() => setActiveId(sector.id)}
-                className={`relative px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 focus:outline-hidden cursor-pointer ${
+                className={`relative px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm md:text-base rounded-xl font-medium transition-all duration-200 cursor-pointer select-none text-center ${
                   isSelected
-                    ? "text-[#182337]"
-                    : "text-slate-600 hover:text-slate-900"
+                    ? "bg-[#FF5A00] text-white shadow-sm scale-[1.02] border border-[#FF5A00]"
+                    : "bg-neutral-100/80 hover:bg-neutral-200/70 text-neutral-700 border border-neutral-200/40"
                 }`}
               >
-                {isSelected && (
-                  <motion.div
-                    layoutId="active-industry-tab-pill"
-                    className="absolute inset-0 bg-[#FFEADB] rounded-full shadow-[0_2px_8px_rgba(255,90,0,0.14)] border border-[#FF5A00]/20"
-                    transition={{
-                      type: "spring",
-                      stiffness: 420,
-                      damping: 32,
-                    }}
-                  />
-                )}
-                <span className="relative z-10">{tabLabel}</span>
+                <span>{tabLabel}</span>
               </button>
             );
           })}
