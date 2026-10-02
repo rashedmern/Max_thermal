@@ -27,7 +27,7 @@ export default function Footer() {
     { name: t.products.tabs.rawBeads, href: "#products" },
     {
       name: language === "bn" ? "মেশিনারি সাপোর্ট" : "Machinery Support",
-      href: "#quote",
+      href: "/quote",
     },
   ];
 

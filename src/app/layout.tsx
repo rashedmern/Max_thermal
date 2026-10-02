@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Hind_Siliguri } from "next/font/google";
+import { Geist, Geist_Mono, Baloo_Da_2 } from "next/font/google";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import ThermalBackground from "@/components/background/ThermalBackground";
 import Navbar from "@/components/navigation/Navbar";
@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const hindSiliguri = Hind_Siliguri({
-  weight: ["400", "500", "600", "700"],
+const balooDa2 = Baloo_Da_2({
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["bengali"],
   variable: "--font-bengali",
   display: "swap",
@@ -51,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${hindSiliguri.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${balooDa2.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col relative selection:bg-[#FFEADB] selection:text-[#182337] w-full max-w-[100vw] overflow-x-hidden">
         <LanguageProvider>
@@ -63,7 +63,7 @@ export default function RootLayout({
             <Navbar />
 
             {/* Page Content */}
-            <main className="relative z-10 flex-grow pt-20 sm:pt-28 w-full max-w-full overflow-x-clip">
+            <main className="relative z-10 flex-grow pt-17 sm:pt-19 w-full max-w-full overflow-x-clip">
               {children}
             </main>
 

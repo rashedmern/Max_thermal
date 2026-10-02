@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -76,17 +76,17 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 select-none scroll-mt-24 overflow-hidden"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-8 sm:pb-10 select-none scroll-mt-18 overflow-hidden"
       aria-label="Featured Projects and Infrastructure"
     >
       {/* 1. Centered Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+      <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-4">
         <span className="text-xs uppercase tracking-widest text-[#FF5A00] font-bold">
           {t.projects.sectionTag}
         </span>
 
         <h2
-          className={`text-3xl sm:text-4xl lg:text-5xl font-black text-[#0F172A] mt-2 ${
+          className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F172A] mt-1 ${
             language === "bn"
               ? "tracking-normal leading-snug sm:leading-[1.2] font-bengali"
               : "tracking-tight leading-[1.1] font-sans"
@@ -95,13 +95,13 @@ export default function ProjectsSection() {
           {t.projects.sectionTitle}
         </h2>
 
-        <p className="text-sm sm:text-base md:text-lg text-slate-600 font-normal leading-relaxed mt-4 max-w-2xl mx-auto">
+        <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-1 sm:mt-1.5 max-w-2xl mx-auto">
           {t.projects.sectionSubtitle}
         </p>
       </div>
 
       {/* 2. Visual-First Full-Bleed Showcase Cards (3 Mega Projects) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
         {MEGA_PROJECTS.map((proj) => {
           const trans = t.projects.megaProjects[proj.id];
           const title = trans?.title || proj.title;
@@ -118,7 +118,7 @@ export default function ProjectsSection() {
               tabIndex={0}
               role="button"
               aria-label={`View fullscreen photo of ${title}`}
-              className="group relative w-full h-[400px] sm:h-[480px] md:h-[500px] rounded-[28px] sm:rounded-[32px] overflow-hidden cursor-pointer shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 bg-slate-900 border border-white/20 select-none"
+              className="group relative w-full h-[280px] sm:h-[340px] md:h-[370px] rounded-[24px] sm:rounded-[28px] overflow-hidden cursor-pointer shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 bg-slate-900 border border-white/20 select-none"
             >
               {/* Full-bleed Photo with Smooth Zoom on Hover */}
               <Image
@@ -154,7 +154,7 @@ export default function ProjectsSection() {
 
               {/* Bottom Info: Bold Headline & Visual Supply Tag */}
               <div className="absolute bottom-6 left-6 right-6 z-10 space-y-3 pointer-events-none">
-                <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight drop-shadow-md">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight drop-shadow-md">
                   {title}
                 </h3>
 
@@ -176,18 +176,18 @@ export default function ProjectsSection() {
       </div>
 
       {/* 3. Additional Projects & Commercial Footprint Gallery */}
-      <div className="mt-20 sm:mt-24 pt-12 border-t border-slate-200/80">
+      <div className="mt-8 sm:mt-10 pt-6 border-t border-slate-200/80">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 sm:mb-4 gap-4">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200/60 text-[#FF5A00] text-xs font-bold uppercase tracking-wider mb-2.5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200/60 text-[#FF5A00] text-xs font-bold uppercase tracking-wider mb-2">
               <Building2 className="w-3.5 h-3.5" />
               <span>{t.projects.commercialTag}</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0F172A] tracking-tight leading-snug">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F172A] tracking-tight leading-snug">
               {t.projects.commercialTitle}
             </h3>
-            <p className="text-sm sm:text-base text-slate-600 mt-2 font-normal leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 mt-1 font-normal leading-relaxed">
               {t.projects.commercialSubtitle}
             </p>
           </div>
@@ -259,7 +259,7 @@ export default function ProjectsSection() {
         </div>
       </div>
 
-      {/* 4. Fullscreen Lightbox Modal */}
+      {/* 4. Compact & Screen-Fitting Lightbox Modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -268,70 +268,70 @@ export default function ProjectsSection() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 overscroll-contain"
+            className="fixed inset-0 z-[80] bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 md:p-6 overscroll-contain"
             style={{ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
               data-lenis-prevent
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative max-w-5xl w-full max-h-[92dvh] max-h-[calc(100dvh-2rem)] flex flex-col rounded-3xl overflow-hidden bg-slate-950 border border-white/15 shadow-2xl overscroll-contain"
+              initial={{ scale: 0.95, opacity: 0, y: 12 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 12 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+              className="relative max-w-xl sm:max-w-2xl lg:max-w-3xl w-full max-h-[min(520px,86dvh)] flex flex-col rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-950 border border-white/20 shadow-2xl overscroll-contain"
               style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
+              {/* Close Button - Prominent, High-Contrast & Always Visible */}
               <button
                 type="button"
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-md text-white border border-white/20 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer shadow-lg"
+                className="absolute top-3 right-3 sm:top-3.5 sm:right-3.5 z-30 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/80 hover:bg-[#FF5A00] text-white border border-white/30 flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer shadow-xl"
                 aria-label="Close fullscreen view"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
               </button>
 
-              {/* Fullscreen Photo Frame */}
-              <div className="relative w-full h-[50dvh] sm:h-[65dvh] max-h-[620px] bg-black">
+              {/* Compact Photo Frame */}
+              <div className="relative w-full h-[180px] sm:h-[230px] md:h-[270px] max-h-[46dvh] bg-black">
                 <Image
                   src={selectedProject.image}
                   alt={selectedProject.title}
                   fill
                   priority
-                  sizes="(max-width: 1200px) 100vw, 1200px"
-                  className="object-contain sm:object-cover"
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  className="object-cover"
                 />
               </div>
 
-              {/* Modal Caption Bar */}
-              <div className="p-5 sm:p-6 bg-slate-900/95 backdrop-blur-md border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-white">
-                <div className="space-y-1 max-w-2xl">
-                  <div className="flex items-center gap-2 text-xs text-[#FF8540] font-semibold">
-                    <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
-                    <span>{selectedProject.location.replace(/^📍\s*/, "")}</span>
+              {/* Compact Modal Caption Bar */}
+              <div className="p-3.5 sm:p-4 md:p-5 bg-slate-900/95 backdrop-blur-md border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-white">
+                <div className="space-y-0.5 max-w-xl">
+                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-[#FF8540] font-semibold">
+                    <MapPin className="w-3 h-3 flex-shrink-0" />
+                    <span>{selectedProject.location.replace(/^dY"?\s*/, "")}</span>
                     {selectedProject.status && (
                       <>
                         <span>•</span>
-                        <span className="text-emerald-400 font-bold uppercase tracking-wider">
+                        <span className="text-emerald-400 font-bold uppercase tracking-wider text-[10px] sm:text-[11px]">
                           {selectedProject.status}
                         </span>
                       </>
                     )}
                   </div>
-                  <h4 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+                  <h4 className="text-base sm:text-lg md:text-xl font-bold text-white tracking-tight leading-snug">
                     {selectedProject.title}
                   </h4>
                   {selectedProject.description && (
-                    <p className="text-xs sm:text-sm text-slate-300/90 font-normal leading-relaxed pt-1">
+                    <p className="text-[11px] sm:text-xs text-slate-300/90 font-normal leading-relaxed line-clamp-2">
                       {selectedProject.description}
                     </p>
                   )}
                 </div>
 
                 <div className="flex items-center gap-2 flex-shrink-0 self-start sm:self-center">
-                  <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FF5A00] text-white text-xs sm:text-sm font-bold shadow-[0_4px_16px_rgba(255,90,0,0.35)]">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#FF5A00] text-white text-[11px] sm:text-xs font-bold shadow-sm">
+                    <CheckCircle2 className="w-3 h-3" />
                     <span>{selectedProject.tag}</span>
                   </span>
                 </div>

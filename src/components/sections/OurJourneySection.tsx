@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import {
@@ -134,31 +135,28 @@ const MARQUEE_CLIENTS = [
 
 /**
  * Clean, Full-Bleed Product Bento Card
- * Smooth Apple-style elevation, 700ms image zoom, and unobtrusive typography
+ * Visual-first presentation with zero obstructive text clutter over the product
  */
 function BentoProductCard({
   card,
   chip,
   title,
-  subtitle,
-  viewSpecsText,
   className,
   priority = false,
 }: {
   card: BentoCardData;
   chip?: string;
   title?: string;
-  subtitle?: string;
-  viewSpecsText?: string;
   className?: string;
   priority?: boolean;
 }) {
   return (
-    <div
-      className={`group relative rounded-[28px] sm:rounded-[32px] overflow-hidden bg-white/80 border border-white/90 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_45px_rgba(255,90,0,0.12)] hover:-translate-y-1.5 transition-all duration-500 cursor-pointer select-none ${className}`}
+    <Link
+      href="#products"
+      className={`group relative rounded-[28px] sm:rounded-[32px] overflow-hidden bg-white/80 border border-white/90 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_45px_rgba(255,90,0,0.14)] hover:-translate-y-1.5 transition-all duration-500 cursor-pointer select-none block ${className}`}
     >
-      {/* 1. Full-Bleed Product Image */}
-      <div className="relative w-full h-full overflow-hidden">
+      {/* 1. Full-Bleed Product Image - 100% Clear & Unobstructed */}
+      <div className="absolute inset-0 overflow-hidden">
         <Image
           src={card.imageSrc}
           alt={card.alt}
@@ -169,32 +167,26 @@ function BentoProductCard({
         />
       </div>
 
-      {/* 2. Top Minimalist Floating Glass Tag */}
-      <div className="absolute top-4 sm:top-5 left-4 sm:left-5 z-10 pointer-events-none">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md border border-white/80 text-slate-800 text-xs font-semibold shadow-xs">
+      {/* 2. Top Minimalist Floating Glass Badge */}
+      <div className="absolute top-3.5 sm:top-4 left-3.5 sm:left-4 z-10 pointer-events-none">
+        <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/90 backdrop-blur-md border border-white/80 text-slate-800 text-[11px] sm:text-xs font-semibold shadow-2xs">
           <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A00]" />
           {chip || card.chip}
         </span>
       </div>
 
-      {/* 3. Subtle Bottom Shadow Gradient & Clean Typography (Unobstructed View) */}
-      <div className="absolute inset-x-0 bottom-0 pt-20 pb-5 sm:pb-6 px-5 sm:px-7 bg-gradient-to-t from-black/75 via-black/35 to-transparent flex items-end justify-between gap-4 z-10 pointer-events-none">
-        <div className="max-w-xl">
-          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-tight leading-tight">
-            {title || card.title}
-          </h3>
-          <p className="text-xs sm:text-sm text-white/90 font-normal mt-1 leading-snug line-clamp-2">
-            {subtitle || card.subtitle}
-          </p>
-        </div>
+      {/* 3. Subtle Low-Profile Bottom Vignette with Clean Title Only (Unobstructed Product View) */}
+      <div className="absolute inset-x-0 bottom-0 pt-10 pb-3.5 sm:pb-4 px-4 sm:px-5 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-center justify-between gap-3 z-10 pointer-events-none">
+        <h3 className="text-sm sm:text-base lg:text-lg font-bold text-white tracking-tight leading-snug drop-shadow-md truncate">
+          {title || card.title}
+        </h3>
 
-        {/* Interactive Action Pill Button */}
-        <div className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/95 text-slate-900 text-xs font-semibold shadow-md group-hover:bg-[#FF5A00] group-hover:text-white group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-          <span>{viewSpecsText || "View Specs"}</span>
-          <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        {/* Minimal Floating Glass Arrow Button */}
+        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/90 backdrop-blur-md text-slate-800 flex items-center justify-center shadow-sm group-hover:bg-[#FF5A00] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0">
+          <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -205,7 +197,7 @@ export default function OurJourneySection() {
   return (
     <section
       id="our-journey"
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 select-none scroll-mt-24 overflow-hidden"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-8 sm:pb-10 select-none scroll-mt-18 overflow-hidden"
       aria-label="Our Journey"
     >
       {/* Anchor alias for backwards compatibility */}
@@ -217,11 +209,11 @@ export default function OurJourneySection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-4xl mx-auto text-center mb-10 sm:mb-14"
+        className="max-w-4xl mx-auto text-center mb-3 sm:mb-4"
       >
         {/* Headline */}
         <h2
-          className={`text-3xl sm:text-5xl lg:text-6xl font-black text-[#182337] ${
+          className={`text-2xl sm:text-4xl lg:text-5xl font-bold text-[#182337] ${
             language === "bn"
               ? "tracking-normal leading-snug sm:leading-[1.2] font-bengali"
               : "tracking-tight leading-[1.08] font-sans"
@@ -231,53 +223,47 @@ export default function OurJourneySection() {
         </h2>
 
         {/* Subtitle */}
-        <p className="text-sm sm:text-base md:text-lg text-slate-600 font-normal leading-relaxed mt-3.5 sm:mt-4 max-w-2xl mx-auto">
+        <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-1 sm:mt-1.5 max-w-2xl mx-auto">
           {t.journey.subtitle}
         </p>
       </motion.div>
 
-      {/* 2. Bento Showcase Grid (Full-Bleed Product Cards) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      {/* 2. Bento Showcase Grid (Full-Bleed Product Cards - Visual First) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
         {/* Left Main Card: Precision EPS Sheets */}
         <div className="lg:col-span-7">
           <BentoProductCard
             card={mainCard}
             chip={t.journey.mainCard.chip}
             title={t.journey.mainCard.title}
-            subtitle={t.journey.mainCard.subtitle}
-            viewSpecsText={t.journey.viewSpecs}
             priority={true}
-            className="h-[280px] sm:h-[380px] md:h-[460px] lg:h-[500px]"
+            className="h-[250px] sm:h-[340px] md:h-[380px] lg:h-[415px]"
           />
         </div>
 
         {/* Right Stacked Column: MuriBall + Protective Packaging */}
-        <div className="lg:col-span-5 flex flex-col gap-6">
+        <div className="lg:col-span-5 flex flex-col gap-4 sm:gap-5">
           <BentoProductCard
             card={topRightCard}
             chip={t.journey.topRightCard.chip}
             title={t.journey.topRightCard.title}
-            subtitle={t.journey.topRightCard.subtitle}
-            viewSpecsText={t.journey.viewSpecs}
-            className="h-[200px] sm:h-[238px]"
+            className="h-[165px] sm:h-[190px] lg:h-[198px]"
           />
           <BentoProductCard
             card={bottomRightCard}
             chip={t.journey.bottomRightCard.chip}
             title={t.journey.bottomRightCard.title}
-            subtitle={t.journey.bottomRightCard.subtitle}
-            viewSpecsText={t.journey.viewSpecs}
-            className="h-[200px] sm:h-[238px]"
+            className="h-[165px] sm:h-[190px] lg:h-[198px]"
           />
         </div>
       </div>
 
       {/* 3. Our Gratified Clients (Infinite Sliding Marquee) */}
-      <div className="relative mt-20 sm:mt-24">
+      <div className="relative mt-8 sm:mt-10">
         {/* Header (Centered) */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-4">
           <h3
-            className={`text-2xl sm:text-3xl lg:text-4xl font-black text-[#0F172A] ${
+            className={`text-xl sm:text-2xl lg:text-3xl font-bold text-[#0F172A] ${
               language === "bn"
                 ? "tracking-normal leading-snug font-bengali"
                 : "tracking-tight leading-[1.1] font-sans"
@@ -286,7 +272,7 @@ export default function OurJourneySection() {
             {t.journey.clientsTitle}
           </h3>
 
-          <p className="text-xs sm:text-sm md:text-base text-slate-600 font-normal leading-relaxed mt-3 sm:mt-4 max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-1 sm:mt-1.5 max-w-2xl mx-auto">
             {t.journey.clientsSubtitle}
           </p>
         </div>
@@ -321,3 +307,4 @@ export default function OurJourneySection() {
     </section>
   );
 }
+

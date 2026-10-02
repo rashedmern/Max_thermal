@@ -17,14 +17,14 @@ export default function FAQSection() {
   return (
     <section
       id="faq"
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 select-none overflow-hidden"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-8 sm:pb-10 select-none scroll-mt-18 overflow-hidden"
       aria-label="Frequently Asked Questions"
     >
 
       {/* 1. Centered Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+      <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-4">
         <h2
-          className={`text-3xl sm:text-4xl lg:text-5xl font-black text-[#0F172A] ${
+          className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F172A] ${
             language === "bn"
               ? "tracking-normal leading-snug sm:leading-[1.2] font-bengali"
               : "tracking-tight leading-[1.1] font-sans"
@@ -33,7 +33,7 @@ export default function FAQSection() {
           {t.faq.sectionTitle}
         </h2>
 
-        <p className="text-sm sm:text-base md:text-lg text-slate-600 font-normal leading-relaxed mt-4 max-w-2xl mx-auto">
+        <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-1 sm:mt-1.5 max-w-2xl mx-auto">
           {t.faq.sectionSubtitle}
         </p>
       </div>
@@ -107,3 +107,4 @@ export default function FAQSection() {
     </section>
   );
 }
+

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -13,6 +13,31 @@ export default function HeroVideoSection() {
   const ambientVideoRef = useRef<HTMLVideoElement>(null);
 
   const [isMuted, setIsMuted] = useState(HERO_VIDEO_CONFIG.muted);
+
+  // Guaranteed Autoplay on Initial Mount
+  useEffect(() => {
+    const video = videoRef.current;
+    const ambient = ambientVideoRef.current;
+
+    if (video) {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.load();
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Autoplay was prevented, will play on canplay or first scroll
+        });
+      }
+    }
+
+    if (ambient) {
+      ambient.muted = true;
+      ambient.defaultMuted = true;
+      ambient.load();
+      ambient.play().catch(() => {});
+    }
+  }, []);
 
   // Viewport-based Auto Play / Pause (IntersectionObserver)
   useEffect(() => {
@@ -31,18 +56,18 @@ export default function HeroVideoSection() {
               ambientVideoRef.current.play().catch(() => {});
             }
           } else {
-            // Pause immediately on leave viewport
-            if (videoRef.current && !videoRef.current.paused) {
+            // Safely pause when scrolled out of view (prevent interrupting freshly loading video)
+            if (videoRef.current && !videoRef.current.paused && videoRef.current.readyState >= 2) {
               videoRef.current.pause();
             }
-            if (ambientVideoRef.current && !ambientVideoRef.current.paused) {
+            if (ambientVideoRef.current && !ambientVideoRef.current.paused && ambientVideoRef.current.readyState >= 2) {
               ambientVideoRef.current.pause();
             }
           }
         });
       },
       {
-        threshold: HERO_VIDEO_CONFIG.intersectionThreshold,
+        threshold: HERO_VIDEO_CONFIG.intersectionThreshold ?? 0.1,
       }
     );
 
@@ -63,7 +88,7 @@ export default function HeroVideoSection() {
   return (
     <section
       id="home"
-      className="relative w-full max-w-full overflow-hidden pt-4 sm:pt-8 pb-10 sm:pb-14 px-4 sm:px-6 lg:px-8 flex flex-col items-center select-none scroll-mt-24"
+      className="relative w-full max-w-full overflow-hidden pt-3 sm:pt-6 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center select-none scroll-mt-18"
     >
       {/* 1. Hero Header */}
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
@@ -72,7 +97,7 @@ export default function HeroVideoSection() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className={`text-3xl sm:text-5xl lg:text-6xl font-black text-[#182337] ${
+          className={`text-3xl sm:text-5xl lg:text-6xl font-bold text-[#182337] ${
             language === "bn"
               ? "tracking-normal leading-snug sm:leading-[1.22] py-1 font-bengali"
               : "tracking-tight leading-[1.08] font-sans"
@@ -89,7 +114,7 @@ export default function HeroVideoSection() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className={`text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl font-normal mt-3.5 sm:mt-4 ${
+          className={`text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl font-normal mt-2 sm:mt-3 ${
             language === "bn"
               ? "leading-relaxed tracking-normal font-bengali"
               : "leading-relaxed"
@@ -105,16 +130,18 @@ export default function HeroVideoSection() {
         initial={{ opacity: 0, scale: 0.98, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-5xl lg:max-w-6xl mt-8 sm:mt-10 rounded-3xl sm:rounded-[36px] overflow-hidden bg-[#182337] border-2 border-white/80 shadow-[0_24px_70px_rgba(255,90,0,0.16),0_12px_28px_rgba(0,0,0,0.08)] group"
+        className="relative w-full max-w-4xl lg:max-w-5xl max-h-[58vh] aspect-[16/9] sm:aspect-[16/9] md:aspect-[18/9] mt-5 sm:mt-7 rounded-3xl sm:rounded-[36px] overflow-hidden bg-[#182337] border-2 border-white/80 shadow-[0_24px_70px_rgba(255,90,0,0.16),0_12px_28px_rgba(0,0,0,0.08)] group"
       >
-        <div className="relative w-full aspect-[16/9] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1E293B] to-[#0F172A]">
+        <div className="relative w-full h-full flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1E293B] to-[#0F172A]">
           {/* Ambient Video Background Blur (Fills widescreen container with live atmospheric light) */}
           <video
             ref={ambientVideoRef}
-            src={HERO_VIDEO_CONFIG.sources[0]?.src}
-            autoPlay={HERO_VIDEO_CONFIG.autoplay}
+            src="/videos/ugc_video.mp4"
+            poster={HERO_VIDEO_CONFIG.poster}
+            autoPlay
             muted
-            loop={HERO_VIDEO_CONFIG.loop}
+            defaultMuted
+            loop
             playsInline
             preload="auto"
             aria-hidden="true"
@@ -127,11 +154,18 @@ export default function HeroVideoSection() {
           {/* Primary Video Player */}
           <video
             ref={videoRef}
-            autoPlay={HERO_VIDEO_CONFIG.autoplay}
-            muted={isMuted}
-            loop={HERO_VIDEO_CONFIG.loop}
+            src="/videos/ugc_video.mp4"
+            poster={HERO_VIDEO_CONFIG.poster}
+            autoPlay
+            muted
+            defaultMuted
+            loop
             playsInline
             preload="auto"
+            onCanPlay={(e) => {
+              e.currentTarget.muted = true;
+              e.currentTarget.play().catch(() => {});
+            }}
             className="relative z-10 w-full h-full object-cover shadow-2xl rounded-2xl"
           >
             {HERO_VIDEO_CONFIG.sources.map((src, index) => (
@@ -180,3 +214,4 @@ export default function HeroVideoSection() {
     </section>
   );
 }
+

@@ -45,7 +45,7 @@ export default function Home() {
       {/* 9. Direct Supply & Quotation CTA Banner */}
       <section
         id="quote"
-        className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pb-28 scroll-mt-24 relative overflow-hidden"
+        className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-14 sm:pb-20 scroll-mt-18 relative overflow-hidden"
       >
         <span id="contact" className="sr-only" aria-hidden="true" />
         <div className="relative rounded-3xl overflow-hidden bg-white/95 backdrop-blur-xl border border-white/90 text-[#0F172A] p-8 sm:p-14 shadow-[0_12px_40px_rgba(0,0,0,0.06)]">
@@ -67,7 +67,7 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap items-center gap-4 mt-8">
               <Link
-                href="#contact"
+                href="/quote"
                 className="rounded-full bg-[#FF5A00] hover:bg-[#FF4500] text-white px-8 py-3.5 text-sm font-semibold shadow-[0_6px_20px_rgba(255,90,0,0.35)] transition-all hover:scale-105 active:scale-95 inline-flex items-center gap-2"
               >
                 <span>{t.quote.button}</span>

@@ -730,6 +730,64 @@ export const TRANSLATIONS: Record<Language, Translations> = {
             },
           ],
         },
+        "soundproofing-noise": {
+          title: "Soundproofing Against Noise: DJ Party Next Door",
+          typeLabel: "Acoustic Comic",
+          excerpt:
+            "Why suffer from deafening outside noise? Discover how EPS acoustic dampening creates peaceful bedrooms.",
+          readTime: "3 min read",
+          panels: [
+            {
+              title: "The Midnight Bass Nightmare",
+              dialogueBn:
+                "পাশের ঘরে বা রাস্তায় তীব্র ডিজে সাউন্ড? সাধারণ ইটের দেয়াল দিয়ে লো-ফ্রিকোয়েন্সি শব্দ ও ভাইব্রেশন সরাসরি ঘরে ঢুকে পড়ে—ঘুমানো অসম্ভব!",
+              dialogueEn:
+                "Loud party bass vibrations and highway traffic rumble penetrate right through conventional brick walls, turning peaceful bedtime into sleepless misery!",
+              explanation:
+                "Sound waves travel through solid building structures via mechanical vibration. Hard surfaces reflect sound waves and amplify reverberation.",
+              keyTakeaway: "Hard walls without cavity damping act as acoustic transmitters.",
+            },
+            {
+              title: "Acoustic Decoupling with EPS Core Cavities",
+              dialogueBn:
+                "দেয়ালের ভেতরে বা ফলস সিলিংয়ে ডেনসিটি-ক্যালিব্রেটেড ইপিএস শিট সাউন্ডের ভাইব্রেশন শোষণ করে রুমকে করে তোলে শান্ত ও কোলাহলমুক্ত।",
+              dialogueEn:
+                "Dense Max Thermal EPS boards installed inside double-stud drywall cavities absorb mechanical vibrations and break acoustic bridges, restoring pin-drop tranquility.",
+              explanation:
+                "By decoupling the wall partitions, sound transmission class (STC) ratings climb dramatically, reducing both airborne speech noise and low-frequency bass rumble.",
+              keyTakeaway: "Enjoy uninterrupted sleep regardless of neighborhood party noise.",
+            },
+          ],
+        },
+        "fish-export-preservation": {
+          title: "Boosting Fresh Fish Exports with Insulated Boxes",
+          typeLabel: "Industrial Case",
+          excerpt:
+            "Preserving catch freshness from coastal fisheries to global international markets.",
+          readTime: "4 min read",
+          panels: [
+            {
+              title: "The Coastal Cold-Chain Challenge",
+              dialogueBn:
+                "কক্সবাজার ও খুলনা থেকে আন্তর্জাতিক বাজারে ইলিশ, চিংড়ি ও রুই পাঠানোর সময় সাধারণ বাক্সে বরফ গলে মাছের মান নষ্ট হয়ে যায়।",
+              dialogueEn:
+                "Transporting premium Hilsa, Black Tiger shrimp, and Rui from coastal fishing ports to international airports requires zero temperature fluctuation.",
+              explanation:
+                "Uninsulated or weak shipping containers experience rapid thermal exchange under tropical sun, melting cooling ice and spoiling lucrative export consignments.",
+              keyTakeaway: "Every degree of temperature spike degrades export market grade and value.",
+            },
+            {
+              title: "Max Thermal Molded EPS Export Shippers",
+              dialogueBn:
+                "ম্যাক্স থার্মালের এয়ারটাইট মোল্ডেড ইপিএস বক্সে বরফ গলে না, ৪°-র নিচে তাপমাত্রা থাকে ৪৮ ঘণ্টার বেশি—নিশ্চিত করে প্রিমিয়াম এক্সপোর্ট কোয়ালিটি।",
+              dialogueEn:
+                "Max Thermal high-density molded EPS boxes preserve ice and keep internal temperatures safely below 4°C for over 48 hours throughout long-haul transit.",
+              explanation:
+                "Molded interlocking EPS boxes provide superior insulation without thermal leaks, preserving ice firmness and keeping seafood at export-grade peak condition.",
+              keyTakeaway: "Ensuring zero-spoilage exports with 48+ hour temperature retention.",
+            },
+          ],
+        },
       },
     },
     faq: {
@@ -1270,6 +1328,64 @@ export const TRANSLATIONS: Record<Language, Translations> = {
               explanation:
                 "ম্যাক্স থার্মাল শিট যান্ত্রিক কম্পন বিচ্ছিন্ন করে এবং জিপসাম দেয়ালের ভেতরে শব্দ শোষণ করে প্রায় ২৮ ডেসিবেল পর্যন্ত কোলাহল হ্রাস করে।",
               keyTakeaway: "শব্দ তরঙ্গ বিচ্ছিন্ন করে কারখানা ও ঘরে গড়ে তুলুন শান্ত পরিবেশ।",
+            },
+          ],
+        },
+        "soundproofing-noise": {
+          title: "শব্দ নিরোধক সমাধান: পাশের বাসার ডিজে পার্টি ও কোলাহল",
+          typeLabel: "অ্যাকোস্টিক কমিক",
+          excerpt:
+            "বাইরের তীব্র শব্দ ও কম্পন কেন সহ্য করবেন? জানুন কীভাবে ইপিএস অ্যাকোস্টিক শিট বেডরুমকে শান্ত ও নীরব রাখে।",
+          readTime: "৩ মিনিট পাঠ",
+          panels: [
+            {
+              title: "মধ্যরাতের বিকট সাউন্ডের যন্ত্রণা",
+              dialogueBn:
+                "পাশের ঘরে বা রাস্তায় তীব্র ডিজে সাউন্ড? সাধারণ ইটের দেয়াল দিয়ে লো-ফ্রিকোয়েন্সি শব্দ ও ভাইব্রেশন সরাসরি ঘরে ঢুকে পড়ে—ঘুমানো অসম্ভব!",
+              dialogueEn:
+                "Loud party bass vibrations and highway traffic rumble penetrate right through conventional brick walls, turning peaceful bedtime into sleepless misery!",
+              explanation:
+                "শব্দ তরঙ্গ কঠিন কাঠামোর ভেতর দিয়ে যান্ত্রিক কম্পন হিসেবে ছড়িয়ে পড়ে। সাধারণ দেয়াল কোনো বাধা ছাড়া শব্দকে আরও বাড়িয়ে দেয়।",
+              keyTakeaway: "সলিড দেয়ালে অ্যাকোস্টিক ড্যাম্পিং না থাকলে তা শব্দের পরিবাহক হিসেবে কাজ করে।",
+            },
+            {
+              title: "ইপিএস কোর ক্যাভিটিতে সাউন্ড ডিকাপলিং",
+              dialogueBn:
+                "দেয়ালের ভেতরে বা ফলস সিলিংয়ে ডেনসিটি-ক্যালিব্রেটেড ইপিএস শিট সাউন্ডের ভাইব্রেশন শোষণ করে রুমকে করে তোলে শান্ত ও কোলাহলমুক্ত।",
+              dialogueEn:
+                "Dense Max Thermal EPS boards installed inside double-stud drywall cavities absorb mechanical vibrations and break acoustic bridges, restoring pin-drop tranquility.",
+              explanation:
+                "পার্টিশন দেয়ালে ইপিএস ব্যবহারের ফলে সাউন্ড ট্রান্সমিশন ক্লাস (STC) বহুগুণ বাড়ে, যা বাতাসের ও লো-ফ্রিকোয়েন্সি বাসের কম্পন সম্পূর্ণ শোষণ করে।",
+              keyTakeaway: "বাইরের যেকোনো পার্টির বিকট শব্দের মাঝেও ঘরে উপভোগ করুন গভীর নিরবচ্ছিন্ন ঘুম।",
+            },
+          ],
+        },
+        "fish-export-preservation": {
+          title: "তাজা মাছ রপ্তানিতে ইনস্যুলেটেড বক্সের ভূমিকা",
+          typeLabel: "ইন্ডাস্ট্রিয়াল কেস স্টাডি",
+          excerpt:
+            "উপকূলীয় মৎস্য বন্দর থেকে আন্তর্জাতিক বিশ্ববাজারে মাছের টাটকা মান অক্ষুণ্ন রাখার উপায়।",
+          readTime: "৪ মিনিট পাঠ",
+          panels: [
+            {
+              title: "উপকূলীয় কোল্ড-চেইনের বড় চ্যালেঞ্জ",
+              dialogueBn:
+                "কক্সবাজার ও খুলনা থেকে আন্তর্জাতিক বাজারে ইলিশ, চিংড়ি ও রুই পাঠানোর সময় সাধারণ বাক্সে বরফ গলে মাছের মান নষ্ট হয়ে যায়।",
+              dialogueEn:
+                "Transporting premium Hilsa, Black Tiger shrimp, and Rui from coastal fishing ports to international airports requires zero temperature fluctuation.",
+              explanation:
+                "ইনস্যুলেশনবিহীন বা সাধারণ বাক্সে সূর্যের তীব্র তাপে বরফ দ্রুত গলে যায়, ফলে মূল্যবান রপ্তানি পণ্যের গুণগত মান নষ্ট হয়ে যায়।",
+              keyTakeaway: "তাপমাত্রা সামান্য বাড়লেও আন্তর্জাতিক বাজারে পণ্যের মান ও দাম ব্যাপকভাবে কমে যায়।",
+            },
+            {
+              title: "ম্যাক্স থার্মাল মোল্ডেড ইপিএস এক্সপোর্ট বক্স",
+              dialogueBn:
+                "ম্যাক্স থার্মালের এয়ারটাইট মোল্ডেড ইপিএস বক্সে বরফ গলে না, ৪°-র নিচে তাপমাত্রা থাকে ৪৮ ঘণ্টার বেশি—নিশ্চিত করে প্রিমিয়াম এক্সপোর্ট কোয়ালিটি।",
+              dialogueEn:
+                "Max Thermal high-density molded EPS boxes preserve ice and keep internal temperatures safely below 4°C for over 48 hours throughout long-haul transit.",
+              explanation:
+                "লক-ফিট মোল্ডেড ইপিএস বক্স তাপের কোনো লিকেজ হতে দেয় না, ফলে দূরপাল্লার যাতায়াতেও বরফ অটুট থাকে এবং মাছ সদ্য আহরিত অবস্থায় থাকে।",
+              keyTakeaway: "৪৮ ঘণ্টার বেশি তাপমাত্রা নিয়ন্ত্রণ নিশ্চিত করে শতভাগ অপচয়মুক্ত নিরাপদ রপ্তানি।",
             },
           ],
         },

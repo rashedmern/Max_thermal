@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import MaxThermalLogo from "./MaxThermalLogo";
@@ -26,6 +27,8 @@ const NAV_SECTION_IDS = [
 export default function Navbar() {
   const { getLenis } = useSmoothScroll();
   const { language, setLanguage, t } = useLanguage();
+  const pathname = usePathname();
+  const router = useRouter();
   const [activeSection, setActiveSection] = useState<string>("home");
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -46,6 +49,13 @@ export default function Navbar() {
   // Smooth scroll handler integrated with Lenis
   const handleNavClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => {
+      if (pathname !== "/") {
+        // When on /quote or another subpage, navigate back to homepage anchor
+        e.preventDefault();
+        router.push(`/${item.href}`);
+        return;
+      }
+
       e.preventDefault();
       setActiveSection(item.id);
       isManualScrollRef.current = true;
@@ -55,7 +65,8 @@ export default function Navbar() {
       }
 
       const lenis = getLenis();
-      const offset = item.id === "home" ? 0 : -80;
+      const NAVBAR_HEIGHT = 68;
+      const offset = item.id === "home" ? 0 : -NAVBAR_HEIGHT - 6;
 
       const unlock = () => {
         isManualScrollRef.current = false;
@@ -64,12 +75,12 @@ export default function Navbar() {
       if (item.id === "home") {
         if (lenis) {
           lenis.scrollTo(0, {
-            duration: 1.2,
+            duration: 1.0,
             onComplete: unlock,
           });
         } else {
           window.scrollTo({ top: 0, behavior: "smooth" });
-          manualScrollTimeoutRef.current = setTimeout(unlock, 1200);
+          manualScrollTimeoutRef.current = setTimeout(unlock, 1000);
         }
       } else {
         const targetEl =
@@ -80,14 +91,14 @@ export default function Navbar() {
           if (lenis) {
             lenis.scrollTo(targetEl, {
               offset,
-              duration: 1.2,
+              duration: 1.0,
               onComplete: unlock,
             });
           } else {
             const top =
               targetEl.getBoundingClientRect().top + window.pageYOffset + offset;
             window.scrollTo({ top, behavior: "smooth" });
-            manualScrollTimeoutRef.current = setTimeout(unlock, 1200);
+            manualScrollTimeoutRef.current = setTimeout(unlock, 1000);
           }
         } else {
           unlock();
@@ -95,7 +106,7 @@ export default function Navbar() {
       }
 
       // Safety timeout to guarantee unlock
-      manualScrollTimeoutRef.current = setTimeout(unlock, 1300);
+      manualScrollTimeoutRef.current = setTimeout(unlock, 1100);
 
       // Clean URL hash update without instant jump or full page reload
       if (window.history.pushState) {
@@ -123,6 +134,8 @@ export default function Navbar() {
     if (!initialHash) return;
 
     const timer = setTimeout(() => {
+      const NAVBAR_HEIGHT = 68;
+      const offset = -NAVBAR_HEIGHT - 6;
       if (initialHash === "our-journey" || initialHash === "journey") {
         setActiveSection("our-journey");
         const lenis = getLenis();
@@ -131,9 +144,9 @@ export default function Navbar() {
           document.getElementById("journey");
         if (el) {
           if (lenis) {
-            lenis.scrollTo(el, { offset: -80, duration: 1 });
+            lenis.scrollTo(el, { offset, duration: 1.0 });
           } else {
-            const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+            const top = el.getBoundingClientRect().top + window.pageYOffset + offset;
             window.scrollTo({ top, behavior: "smooth" });
           }
         }
@@ -153,6 +166,11 @@ export default function Navbar() {
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 20);
 
+      if (pathname !== "/") {
+        setActiveSection("");
+        return;
+      }
+
       if (isManualScrollRef.current) return;
 
       let matchedId = "home";
@@ -170,7 +188,7 @@ export default function Navbar() {
           matchedId = "team";
         } else {
           // 3. Section bounding check with navbar trigger line
-          const triggerY = 160;
+          const triggerY = 100;
           const trackedSections: { id: string; el: HTMLElement | null }[] = [
             { id: "home", el: document.getElementById("home") },
             {
@@ -225,7 +243,7 @@ export default function Navbar() {
         cancelAnimationFrame(rafId);
       }
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <header
@@ -241,6 +259,10 @@ export default function Navbar() {
           <div
             className="flex-shrink-0 cursor-pointer"
             onClick={(e) => {
+              if (pathname !== "/") {
+                router.push("/");
+                return;
+              }
               e.preventDefault();
               handleNavClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, {
                 name: "Home",
@@ -261,11 +283,12 @@ export default function Navbar() {
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               const isHovered = hoveredTab === item.id;
+              const targetHref = pathname === "/" ? item.href : `/${item.href}`;
 
               return (
                 <Link
                   key={item.id}
-                  href={item.href}
+                  href={targetHref}
                   onClick={(e) => handleNavClick(e, item)}
                   onMouseEnter={() => setHoveredTab(item.id)}
                   className={`relative px-4 py-1.5 text-[13.5px] tracking-normal font-medium transition-colors duration-200 select-none ${
@@ -367,14 +390,7 @@ export default function Navbar() {
 
             {/* Solid Vibrant Orange CTA Button - Hidden on mobile screens, shown on md+ */}
             <Link
-              href="#quote"
-              onClick={(e) =>
-                handleNavClick(e, {
-                  name: "Quote",
-                  href: "#quote",
-                  id: "contact",
-                })
-              }
+              href="/quote"
               className="relative hidden md:inline-flex items-center justify-center gap-1.5 rounded-full bg-[#FF5A00] hover:bg-[#FF4500] text-white px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold tracking-wide shadow-[0_4px_16px_rgba(255,90,0,0.32)] hover:shadow-[0_6px_22px_rgba(255,90,0,0.45)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shrink-0"
             >
               <span>{t.nav.getQuote}</span>
@@ -418,10 +434,11 @@ export default function Navbar() {
               <div className="flex flex-col space-y-1">
                 {navItems.map((item) => {
                   const isActive = activeSection === item.id;
+                  const targetHref = pathname === "/" ? item.href : `/${item.href}`;
                   return (
                     <Link
                       key={item.id}
-                      href={item.href}
+                      href={targetHref}
                       onClick={(e) => {
                         handleNavClick(e, item);
                         setIsMobileMenuOpen(false);
@@ -478,15 +495,8 @@ export default function Navbar() {
 
               {/* Full-width CTA in Mobile Drawer */}
               <Link
-                href="#quote"
-                onClick={(e) => {
-                  handleNavClick(e, {
-                    name: "Quote",
-                    href: "#quote",
-                    id: "contact",
-                  });
-                  setIsMobileMenuOpen(false);
-                }}
+                href="/quote"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="w-full flex items-center justify-center gap-2 rounded-2xl bg-[#FF5A00] hover:bg-[#FF4500] text-white py-3 text-sm font-semibold shadow-[0_4px_16px_rgba(255,90,0,0.3)] transition-colors"
               >
                 <span>{t.nav.getQuote}</span>

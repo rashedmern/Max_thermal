@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -21,14 +21,14 @@ export default function IndustrySection() {
   return (
     <section
       id="industry"
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 select-none scroll-mt-24 overflow-hidden"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-8 sm:pb-10 select-none scroll-mt-18 overflow-hidden"
       aria-label="Industries We Power"
     >
 
       {/* 1. Centered Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+      <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-4">
         <h2
-          className={`text-3xl sm:text-4xl lg:text-5xl font-black text-[#0F172A] ${
+          className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F172A] ${
             language === "bn"
               ? "tracking-normal leading-snug sm:leading-[1.2] font-bengali"
               : "tracking-tight leading-[1.1] font-sans"
@@ -37,17 +37,17 @@ export default function IndustrySection() {
           {t.industry.sectionTitle}
         </h2>
 
-        <p className="text-sm sm:text-base md:text-lg text-slate-600 font-normal leading-relaxed mt-4 max-w-2xl mx-auto">
+        <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-1 sm:mt-1.5 max-w-2xl mx-auto">
           {t.industry.sectionSubtitle}
         </p>
       </div>
 
       {/* 2. Spacious Card-Style Sector Switcher Hub */}
-      <div className="w-full max-w-4xl mx-auto mb-10 sm:mb-12 bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl border border-neutral-200/80 shadow-md p-3 sm:p-4 md:p-5">
+      <div className="w-full max-w-4xl mx-auto mb-3 sm:mb-4 bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl border border-neutral-200/80 shadow-md p-2 sm:p-3 md:p-3.5">
         <div
           role="tablist"
           aria-label="Industry Sector Switcher"
-          className="flex flex-wrap justify-center items-center gap-2 sm:gap-3"
+          className="flex flex-wrap justify-center items-center gap-1.5 sm:gap-2.5"
         >
           {INDUSTRY_SECTORS.map((sector) => {
             const isSelected = activeId === sector.id;
@@ -61,7 +61,7 @@ export default function IndustrySection() {
                 role="tab"
                 aria-selected={isSelected}
                 onClick={() => setActiveId(sector.id)}
-                className={`relative px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm md:text-base rounded-xl font-medium transition-all duration-200 cursor-pointer select-none text-center ${
+                className={`relative px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm rounded-xl font-medium transition-all duration-200 cursor-pointer select-none text-center ${
                   isSelected
                     ? "bg-[#FF5A00] text-white shadow-sm scale-[1.02] border border-[#FF5A00]"
                     : "bg-neutral-100/80 hover:bg-neutral-200/70 text-neutral-700 border border-neutral-200/40"
@@ -75,7 +75,7 @@ export default function IndustrySection() {
       </div>
 
       {/* 3. Clean Full-Width Showcase Card (Balanced 50/50 2-Column Split) */}
-      <div className="w-full max-w-6xl mx-auto bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 border border-white/90 shadow-[0_8px_32px_rgba(0,0,0,0.04)]">
+      <div className="w-full max-w-6xl mx-auto bg-white/90 backdrop-blur-md rounded-3xl p-5 sm:p-7 border border-white/90 shadow-[0_8px_32px_rgba(0,0,0,0.04)]">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSector.id}
@@ -83,11 +83,11 @@ export default function IndustrySection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center"
           >
             {/* Left Side — 100% Clean Image (No text overlay, no tags) */}
             <div
-              className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-auto lg:h-[400px] rounded-2xl overflow-hidden shadow-xs bg-slate-100 group min-h-[220px] sm:min-h-[300px]"
+              className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-auto lg:h-[320px] rounded-2xl overflow-hidden shadow-xs bg-slate-100 group min-h-[200px] sm:min-h-[260px]"
             >
               <Image
                 src={activeSector.image}
@@ -126,3 +126,4 @@ export default function IndustrySection() {
     </section>
   );
 }
+
