@@ -197,7 +197,7 @@ export default function OurJourneySection() {
   return (
     <section
       id="our-journey"
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-20 lg:pt-24 pb-6 sm:pb-14 lg:pb-18 select-none overflow-hidden"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 lg:pt-20 pb-8 sm:pb-14 lg:pb-18 select-none overflow-hidden"
       aria-label="Our Journey"
     >
       {/* Anchor alias for backwards compatibility */}
@@ -209,7 +209,7 @@ export default function OurJourneySection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-4xl mx-auto text-center mb-3 sm:mb-6"
+        className="max-w-4xl mx-auto text-center mb-5 sm:mb-8"
       >
         {/* Headline */}
         <h2
@@ -223,7 +223,7 @@ export default function OurJourneySection() {
         </h2>
 
         {/* Subtitle */}
-        <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-1 sm:mt-1.5 max-w-2xl mx-auto">
+        <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-1.5 sm:mt-2 max-w-2xl mx-auto">
           {t.journey.subtitle}
         </p>
       </motion.div>

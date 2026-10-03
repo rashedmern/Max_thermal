@@ -21,12 +21,12 @@ export default function IndustrySection() {
   return (
     <section
       id="industry"
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-20 lg:pt-24 pb-6 sm:pb-14 lg:pb-18 select-none overflow-hidden"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 lg:pt-20 pb-8 sm:pb-14 lg:pb-18 select-none overflow-hidden"
       aria-label="Industries We Power"
     >
 
       {/* 1. Centered Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-6">
+      <div className="text-center max-w-3xl mx-auto mb-5 sm:mb-8">
         <h2
           className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F172A] ${
             language === "bn"

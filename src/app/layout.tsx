@@ -63,7 +63,7 @@ export default function RootLayout({
             <Navbar />
 
             {/* Page Content */}
-            <main className="relative z-10 flex-grow pt-17 sm:pt-19 w-full max-w-full overflow-x-clip">
+            <main className="relative z-10 flex-grow pt-13 sm:pt-18 w-full max-w-full overflow-x-clip">
               {children}
             </main>
 

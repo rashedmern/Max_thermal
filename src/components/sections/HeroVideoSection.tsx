@@ -88,7 +88,7 @@ export default function HeroVideoSection() {
   return (
     <section
       id="home"
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 lg:pt-24 pb-6 sm:pb-14 lg:pb-18 min-h-[calc(100dvh-5rem)] flex flex-col justify-center select-none overflow-hidden"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-14 lg:pt-18 pb-8 sm:pb-14 lg:pb-18 select-none overflow-hidden"
     >
       {/* 1. Hero Header */}
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center">

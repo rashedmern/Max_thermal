@@ -153,11 +153,11 @@ export default function ProductsSection() {
   return (
     <section
       id="products"
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-20 lg:pt-24 pb-6 sm:pb-14 lg:pb-18 select-none overflow-hidden"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 lg:pt-20 pb-8 sm:pb-14 lg:pb-18 select-none overflow-hidden"
       aria-label="Engineered Products and Technical Specifications"
     >
       {/* 1. Compact Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-6">
+      <div className="text-center max-w-3xl mx-auto mb-4 sm:mb-6">
         <h2
           className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F172A] ${
             language === "bn"
@@ -168,7 +168,7 @@ export default function ProductsSection() {
           {t.products.sectionTitle}
         </h2>
 
-        <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-1 sm:mt-1.5 max-w-2xl mx-auto">
+        <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-1.5 sm:mt-2 max-w-2xl mx-auto">
           {t.products.sectionSubtitle}
         </p>
       </div>
@@ -176,7 +176,7 @@ export default function ProductsSection() {
       {/* 2. Floating Product Tab Selector */}
       <div
         data-lenis-prevent
-        className="w-full max-w-full overflow-x-auto overscroll-contain no-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] py-0.5 sm:py-1 mb-2.5 sm:mb-4 px-4 sm:px-0"
+        className="w-full max-w-full overflow-x-auto overscroll-contain no-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] py-1 mb-3.5 sm:mb-5 px-4 sm:px-0"
         style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}
       >
         <div className="flex sm:justify-center w-max min-w-full sm:min-w-0 mx-auto">
