@@ -45,7 +45,7 @@ export default function Home() {
       {/* 9. Direct Supply & Quotation CTA Banner */}
       <section
         id="quote"
-        className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-14 sm:pb-20 scroll-mt-18 relative overflow-hidden"
+        className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-14 sm:pb-20 relative overflow-hidden"
       >
         <span id="contact" className="sr-only" aria-hidden="true" />
         <div className="relative rounded-3xl overflow-hidden bg-white/95 backdrop-blur-xl border border-white/90 text-[#0F172A] p-8 sm:p-14 shadow-[0_12px_40px_rgba(0,0,0,0.06)]">

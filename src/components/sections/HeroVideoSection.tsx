@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -88,7 +88,7 @@ export default function HeroVideoSection() {
   return (
     <section
       id="home"
-      className="relative w-full max-w-full overflow-hidden pt-3 sm:pt-6 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center select-none scroll-mt-18"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 lg:pt-24 pb-6 sm:pb-14 lg:pb-18 min-h-[calc(100dvh-5rem)] flex flex-col justify-center select-none overflow-hidden"
     >
       {/* 1. Hero Header */}
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
@@ -130,7 +130,7 @@ export default function HeroVideoSection() {
         initial={{ opacity: 0, scale: 0.98, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-4xl lg:max-w-5xl max-h-[58vh] aspect-[16/9] sm:aspect-[16/9] md:aspect-[18/9] mt-5 sm:mt-7 rounded-3xl sm:rounded-[36px] overflow-hidden bg-[#182337] border-2 border-white/80 shadow-[0_24px_70px_rgba(255,90,0,0.16),0_12px_28px_rgba(0,0,0,0.08)] group"
+        className="relative w-full max-w-4xl lg:max-w-5xl max-h-[58vh] aspect-[16/9] sm:aspect-[16/9] md:aspect-[18/9] mt-5 sm:mt-7 mx-auto rounded-3xl sm:rounded-[36px] overflow-hidden bg-[#182337] border-2 border-white/80 shadow-[0_24px_70px_rgba(255,90,0,0.16),0_12px_28px_rgba(0,0,0,0.08)] group"
       >
         <div className="relative w-full h-full flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1E293B] to-[#0F172A]">
           {/* Ambient Video Background Blur (Fills widescreen container with live atmospheric light) */}

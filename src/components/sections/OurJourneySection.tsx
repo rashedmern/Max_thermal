@@ -197,7 +197,7 @@ export default function OurJourneySection() {
   return (
     <section
       id="our-journey"
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-8 sm:pb-10 select-none scroll-mt-18 overflow-hidden"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-20 lg:pt-24 pb-6 sm:pb-14 lg:pb-18 select-none overflow-hidden"
       aria-label="Our Journey"
     >
       {/* Anchor alias for backwards compatibility */}
@@ -209,7 +209,7 @@ export default function OurJourneySection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-4xl mx-auto text-center mb-3 sm:mb-4"
+        className="max-w-4xl mx-auto text-center mb-3 sm:mb-6"
       >
         {/* Headline */}
         <h2

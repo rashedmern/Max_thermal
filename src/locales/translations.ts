@@ -853,7 +853,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       products: "পণ্যসমূহ",
       projects: "প্রকল্পসমূহ",
       industry: "শিল্প খাত",
-      team: "নেতৃত্ব",
+      team: "টিম",
       getQuote: "কোটেশন নিন",
       quote: "কোটেশন",
       languageLabel: "ভাষা / Language",
@@ -1172,7 +1172,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       },
     },
     team: {
-      sectionTitle: "আমাদের পরিচালনা পর্ষদ ও নেতৃত্ব",
+      sectionTitle: "ম্যাক্স থার্মাল টিম",
       sectionSubtitle:
         "শিল্প উৎপাদন, ইঞ্জিনিয়ারিং উৎকর্ষ ও দেশব্যাপী সফল ব্যবসায়িক পরিচালনার দীর্ঘ অভিজ্ঞতায় সমৃদ্ধ আমাদের শীর্ষ নেতৃত্ব।",
       experienceLabel: "অভিজ্ঞতা:",

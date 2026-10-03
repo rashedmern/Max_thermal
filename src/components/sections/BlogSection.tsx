@@ -46,12 +46,12 @@ export default function BlogSection() {
   return (
     <section
       id="learn"
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 select-none overflow-hidden"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-20 lg:pt-24 pb-6 sm:pb-14 lg:pb-18 select-none overflow-hidden"
       aria-label="Learn About Insulation"
     >
 
       {/* 1. Centered Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+      <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-6">
         <h2
           className={`text-3xl sm:text-4xl lg:text-5xl font-black text-[#0F172A] ${
             language === "bn"

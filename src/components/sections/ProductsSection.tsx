@@ -153,11 +153,11 @@ export default function ProductsSection() {
   return (
     <section
       id="products"
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-8 sm:pb-10 select-none scroll-mt-18 overflow-hidden"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-20 lg:pt-24 pb-6 sm:pb-14 lg:pb-18 select-none overflow-hidden"
       aria-label="Engineered Products and Technical Specifications"
     >
       {/* 1. Compact Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-4">
+      <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-6">
         <h2
           className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F172A] ${
             language === "bn"
@@ -176,7 +176,7 @@ export default function ProductsSection() {
       {/* 2. Floating Product Tab Selector */}
       <div
         data-lenis-prevent
-        className="w-full max-w-full overflow-x-auto overscroll-contain no-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] py-1 mb-3 sm:mb-4 px-4 sm:px-0"
+        className="w-full max-w-full overflow-x-auto overscroll-contain no-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] py-0.5 sm:py-1 mb-2.5 sm:mb-4 px-4 sm:px-0"
         style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}
       >
         <div className="flex sm:justify-center w-max min-w-full sm:min-w-0 mx-auto">
@@ -194,7 +194,7 @@ export default function ProductsSection() {
                   role="tab"
                   aria-selected={isSelected}
                   onClick={() => setActiveId(product.id)}
-                  className={`relative px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-200 select-none whitespace-nowrap shrink-0 cursor-pointer ${
+                  className={`relative px-3 sm:px-5 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-200 select-none whitespace-nowrap shrink-0 cursor-pointer ${
                     isSelected
                       ? "text-[#182337] font-bold"
                       : "text-slate-600 hover:text-slate-900"

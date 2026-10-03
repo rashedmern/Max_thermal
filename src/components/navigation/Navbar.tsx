@@ -65,8 +65,8 @@ export default function Navbar() {
       }
 
       const lenis = getLenis();
-      const NAVBAR_HEIGHT = 68;
-      const offset = item.id === "home" ? 0 : -NAVBAR_HEIGHT - 6;
+      // Scroll strictly to the top boundary of the target section (Zero negative offset into previous section)
+      const offset = 0;
 
       const unlock = () => {
         isManualScrollRef.current = false;
@@ -75,7 +75,7 @@ export default function Navbar() {
       if (item.id === "home") {
         if (lenis) {
           lenis.scrollTo(0, {
-            duration: 1.0,
+            duration: 0.8,
             onComplete: unlock,
           });
         } else {
@@ -90,14 +90,12 @@ export default function Navbar() {
         if (targetEl) {
           if (lenis) {
             lenis.scrollTo(targetEl, {
-              offset,
-              duration: 1.0,
+              offset: 0,
+              duration: 0.8,
               onComplete: unlock,
             });
           } else {
-            const top =
-              targetEl.getBoundingClientRect().top + window.pageYOffset + offset;
-            window.scrollTo({ top, behavior: "smooth" });
+            window.scrollTo({ top: targetEl.offsetTop, behavior: "smooth" });
             manualScrollTimeoutRef.current = setTimeout(unlock, 1000);
           }
         } else {
@@ -134,8 +132,6 @@ export default function Navbar() {
     if (!initialHash) return;
 
     const timer = setTimeout(() => {
-      const NAVBAR_HEIGHT = 68;
-      const offset = -NAVBAR_HEIGHT - 6;
       if (initialHash === "our-journey" || initialHash === "journey") {
         setActiveSection("our-journey");
         const lenis = getLenis();
@@ -144,10 +140,9 @@ export default function Navbar() {
           document.getElementById("journey");
         if (el) {
           if (lenis) {
-            lenis.scrollTo(el, { offset, duration: 1.0 });
+            lenis.scrollTo(el, { offset: 0, duration: 0.8 });
           } else {
-            const top = el.getBoundingClientRect().top + window.pageYOffset + offset;
-            window.scrollTo({ top, behavior: "smooth" });
+            window.scrollTo({ top: el.offsetTop, behavior: "smooth" });
           }
         }
       } else if (NAV_SECTION_IDS.includes(initialHash)) {
@@ -173,43 +168,37 @@ export default function Navbar() {
 
       if (isManualScrollRef.current) return;
 
+      const trackedSections: { id: string; el: HTMLElement | null }[] = [
+        { id: "home", el: document.getElementById("home") },
+        {
+          id: "our-journey",
+          el:
+            document.getElementById("our-journey") ||
+            document.getElementById("journey"),
+        },
+        { id: "products", el: document.getElementById("products") },
+        { id: "projects", el: document.getElementById("projects") },
+        { id: "industry", el: document.getElementById("industry") },
+        { id: "team", el: document.getElementById("team") },
+      ];
+
+      const triggerY = window.innerHeight * 0.35; // Trigger line at top 35% of viewport
       let matchedId = "home";
 
-      // 1. If at the top or hero section
-      if (scrollY < 180) {
+      if (window.scrollY < 120) {
         matchedId = "home";
+      } else if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 60
+      ) {
+        matchedId = "team";
       } else {
-        // 2. If scrolled near the bottom of page
-        const isAtBottom =
-          window.innerHeight + scrollY >=
-          document.documentElement.scrollHeight - 80;
-        const teamEl = document.getElementById("team");
-        if (isAtBottom && teamEl) {
-          matchedId = "team";
-        } else {
-          // 3. Section bounding check with navbar trigger line
-          const triggerY = 100;
-          const trackedSections: { id: string; el: HTMLElement | null }[] = [
-            { id: "home", el: document.getElementById("home") },
-            {
-              id: "our-journey",
-              el:
-                document.getElementById("our-journey") ||
-                document.getElementById("journey"),
-            },
-            { id: "products", el: document.getElementById("products") },
-            { id: "projects", el: document.getElementById("projects") },
-            { id: "industry", el: document.getElementById("industry") },
-            { id: "team", el: document.getElementById("team") },
-          ];
-
-          for (const sec of trackedSections) {
-            if (!sec.el) continue;
-            const rect = sec.el.getBoundingClientRect();
-            if (rect.top <= triggerY && rect.bottom > triggerY) {
-              matchedId = sec.id;
-              break;
-            }
+        for (const sec of trackedSections) {
+          if (!sec.el) continue;
+          const rect = sec.el.getBoundingClientRect();
+          if (rect.top <= triggerY && rect.bottom > triggerY) {
+            matchedId = sec.id;
+            break;
           }
         }
       }

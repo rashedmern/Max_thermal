@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -41,12 +41,12 @@ export default function TeamSection() {
   return (
     <section
       id="team"
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-8 sm:pb-10 select-none scroll-mt-18 overflow-hidden"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-20 lg:pt-24 pb-6 sm:pb-14 lg:pb-18 select-none overflow-hidden"
       aria-label="Leadership and Executive Team"
     >
 
       {/* 1. Centered Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-4">
+      <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-6">
         <h2
           className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F172A] ${
             language === "bn"
