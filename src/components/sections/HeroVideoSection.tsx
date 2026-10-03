@@ -130,7 +130,7 @@ export default function HeroVideoSection() {
         initial={{ opacity: 0, scale: 0.98, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-4xl lg:max-w-5xl max-h-[58vh] aspect-[16/9] sm:aspect-[16/9] md:aspect-[18/9] mt-5 sm:mt-7 mx-auto rounded-3xl sm:rounded-[36px] overflow-hidden bg-[#182337] border-2 border-white/80 shadow-[0_24px_70px_rgba(255,90,0,0.16),0_12px_28px_rgba(0,0,0,0.08)] group"
+        className="relative w-full max-w-7xl h-[68vh] sm:h-[78vh] md:h-[82vh] lg:h-[86vh] min-h-[460px] sm:min-h-[540px] mt-5 sm:mt-7 mx-auto rounded-3xl sm:rounded-[36px] overflow-hidden bg-[#182337] border-2 border-white/80 shadow-[0_24px_70px_rgba(255,90,0,0.16),0_12px_28px_rgba(0,0,0,0.08)] group"
       >
         <div className="relative w-full h-full flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1E293B] to-[#0F172A]">
           {/* Ambient Video Background Blur (Fills widescreen container with live atmospheric light) */}
